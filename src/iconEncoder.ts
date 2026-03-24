@@ -9,7 +9,6 @@ for (let n = 0; n < 256; n++) {
 
 function crc32(buf: Buffer): number {
   let c = 0xffffffff
-  // @ts-expect-error we've enabled iterable for this ts module target
   for (const b of buf) c = CRC_TABLE[(c ^ b) & 0xff] ^ (c >>> 8)
   return (c ^ 0xffffffff) >>> 0
 }
