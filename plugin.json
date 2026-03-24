@@ -9,7 +9,7 @@
   "Version": "0.0.1",
   "MinWoxVersion": "2.0.0",
   "Runtime": "nodejs",
-  "Website": "",
+  "Website": "https://github.com/Bonemind/Wox.Plugin.WinFocus",
   "Entry": "index.js",
   "Icon": "relative:images/app.svg",
   "SupportedOS": [

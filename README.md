@@ -2,6 +2,8 @@
 
 A [Wox](https://github.com/Wox-launcher/Wox) plugin to quickly search and focus open windows.
 
+![screenshot](./images/screenshot.png)
+
 ## Usage
 
 Trigger with `wf`, then type to filter by window title or process name. Select a result to bring that window to the foreground.
