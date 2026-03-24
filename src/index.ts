@@ -1,4 +1,4 @@
-import { Context, Plugin, PluginInitParams, PublicAPI, Query, Result } from "@wox-launcher/wox-plugin"
+import { Context, NewBase64WoxImage, Plugin, PluginInitParams, PublicAPI, Query, Result } from "@wox-launcher/wox-plugin"
 import { WindowProvider } from "./providers/windowProvider.js"
 import { WINDOW_ICON } from "./icons.js"
 
@@ -55,7 +55,7 @@ export const plugin: Plugin = {
     return filtered.map(w => ({
       Title: w.title,
       SubTitle: w.processName ?? "",
-      Icon: WINDOW_ICON,
+      Icon: w.icon ? NewBase64WoxImage(w.icon) : WINDOW_ICON,
       Actions: [
         {
           Id: `focus-${w.id}`,

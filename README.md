@@ -14,4 +14,4 @@ wpm install WinFocus
 
 ## Platform support
 
-Windows only.
+Windows only for now.
