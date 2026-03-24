@@ -83,13 +83,13 @@ export class WindowsProvider implements WindowProvider {
 
   async focusWindow(id: string): Promise<void> {
     const hwnd = Number(id)
-    if (this.fnIsIconic(hwnd)) {
-      this.fnShowWindow(hwnd, SW_RESTORE)
-    }
     // Inject a synthetic keystroke so Windows grants our process permission
     // to call SetForegroundWindow from a non-foreground process.
     this.fnKeybdEvent(VK_F15, 0, 0, 0)
     this.fnKeybdEvent(VK_F15, 0, KEYEVENTF_KEYUP, 0)
+    if (this.fnIsIconic(hwnd)) {
+      this.fnShowWindow(hwnd, SW_RESTORE)
+    }
     this.fnSetForegroundWindow(hwnd)
   }
 

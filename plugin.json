@@ -1,8 +1,10 @@
 {
   "Id": "c14b9877-d896-462a-9eac-cc9dc7f0d48b",
-  "TriggerKeywords": ["ws"],
-  "Name": "Window Switcher",
-  "Description": "Window Switcher",
+  "TriggerKeywords": [
+    "wf"
+  ],
+  "Name": "WinFocus",
+  "Description": "A plugin that allow you to focus a window",
   "Author": "bonemind",
   "Version": "0.0.1",
   "MinWoxVersion": "2.0.0",
@@ -10,5 +12,9 @@
   "Website": "",
   "Entry": "index.js",
   "Icon": "relative:images/app.svg",
-  "SupportedOS": ["windows", "linux", "darwin"]
+  "SupportedOS": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
 }

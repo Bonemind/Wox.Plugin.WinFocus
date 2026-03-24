@@ -1,11 +1,17 @@
-> For developer
+# WinFocus
 
-    Please run `make init` to initialize the project.
+A [Wox](https://github.com/Wox-launcher/Wox) plugin to quickly search and focus open windows.
 
-# Window Switcher
+## Usage
 
-# Install
+Trigger with `wf`, then type to filter by window title or process name. Select a result to bring that window to the foreground.
+
+## Install
 
 ```
-wpm install Window Switcher
+wpm install WinFocus
 ```
+
+## Platform support
+
+Windows only.

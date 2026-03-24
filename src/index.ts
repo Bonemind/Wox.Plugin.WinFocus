@@ -58,7 +58,7 @@ export const plugin: Plugin = {
       Icon: WINDOW_ICON,
       Actions: [
         {
-          Id: "focus",
+          Id: `focus-${w.id}`,
           Name: "Focus Window",
           IsDefault: true,
           Action: async (actionCtx: Context) => {
