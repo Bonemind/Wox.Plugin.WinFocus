@@ -44,7 +44,7 @@ jobs:
       - name: Package
         run: |
           cd dist
-          zip -r ../Wox.Plugin.WinFocus.wox index.js plugin.json images
+          zip -r ../Wox.Plugin.WinFocus.wox index.js plugin.json images build
 
       - name: Create Release
         uses: softprops/action-gh-release@v2

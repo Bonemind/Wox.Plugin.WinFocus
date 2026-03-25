@@ -1,4 +1,4 @@
-.PHONY: help init check-init check-dev-deps install reinstall clean lint format build test package dev
+.PHONY: help init  check-dev-deps install reinstall clean lint format build test package dev
 
 PLUGIN_NAME := Window Switcher
 
@@ -25,19 +25,13 @@ help:
 	@echo "  make format   - Format code"
 	@echo "  make package  - Build and package plugin"
 
-init:
-	$(PYTHON) scripts/init-wox-project.py
-
-check-init:
-	@$(PYTHON) scripts/init-wox-project.py --check-initialized
-
 check-dev-deps:
 	@node -e 'const missing = []; for (const name of ["eslint", "prettier", "jest", "@vercel/ncc", "@babel/cli", "nodemon"]) { try { require.resolve(name); } catch { missing.push(name); } } if (missing.length) { console.error("Development dependencies are not installed. Run '\''make install'\'' first."); console.error("Missing packages: " + missing.join(", ")); process.exit(1); }'
 
-install: check-init
+install: 
 	pnpm install
 
-reinstall: check-init
+reinstall: 
 ifeq ($(OS),Windows_NT)
 	$(POWERSHELL) "foreach ($$path in @('$(DIST_DIR)', 'node_modules')) { if (Test-Path $$path) { Remove-Item -Recurse -Force $$path } }"
 else
@@ -52,16 +46,16 @@ else
 	rm -rf $(DIST_DIR)
 endif
 
-dev: check-init check-dev-deps
+dev: check-dev-deps
 	$(NODEMON) --watch $(SRC_DIR) --watch images --watch plugin.json --ext json,ts,js,mjs,png --exec "$(MAKE) build"
 
-lint: check-init check-dev-deps
+lint: check-dev-deps
 	$(ESLINT) $(SRC_DIR)
 
-format: check-init check-dev-deps
+format: check-dev-deps
 	$(PRETTIER) --write "$(SRC_DIR)/**/*" "**/*.json" README.md
 
-build: check-init check-dev-deps lint format
+build: check-dev-deps lint format
 ifeq ($(OS),Windows_NT)
 	$(POWERSHELL) "if (Test-Path '$(DIST_DIR)') { Remove-Item -Recurse -Force '$(DIST_DIR)' }"
 else
@@ -77,10 +71,10 @@ else
 	cp plugin.json $(DIST_DIR)
 endif
 
-test: check-init check-dev-deps
+test: check-dev-deps
 	$(JEST)
 
-package: check-init build
+package: build
 ifeq ($(OS),Windows_NT)
 	$(POWERSHELL) "if (Test-Path 'wox.plugin.$(PLUGIN_NAME).zip') { Remove-Item -Force 'wox.plugin.$(PLUGIN_NAME).zip' }; if (Test-Path 'wox.plugin.$(PLUGIN_NAME).wox') { Remove-Item -Force 'wox.plugin.$(PLUGIN_NAME).wox' }; Compress-Archive -Path '$(DIST_DIR)\\*' -DestinationPath 'wox.plugin.$(PLUGIN_NAME).zip'; Move-Item 'wox.plugin.$(PLUGIN_NAME).zip' 'wox.plugin.$(PLUGIN_NAME).wox'"
 	$(POWERSHELL) "if (Test-Path '$(DIST_DIR)') { Remove-Item -Recurse -Force '$(DIST_DIR)' }"
