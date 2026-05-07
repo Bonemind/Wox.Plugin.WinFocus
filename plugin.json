@@ -6,7 +6,7 @@
   "Name": "WinFocus",
   "Description": "A plugin that allow you to focus a window",
   "Author": "bonemind",
-  "Version": "0.0.1",
+  "Version": "0.0.2",
   "MinWoxVersion": "2.0.0",
   "Runtime": "nodejs",
   "Website": "https://github.com/Bonemind/Wox.Plugin.WinFocus",
